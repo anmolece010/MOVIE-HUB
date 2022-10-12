@@ -1,6 +1,7 @@
 import { Badge } from "@mui/material";
 import React from "react";
 import { img_300, unavailable } from "../../Config/config";
+import ContentModal from "../ContentModal/ContentModal";
 import "./content.css";
 
 export default function SingleContent({
@@ -12,9 +13,7 @@ export default function SingleContent({
   vote_average,
 }) {
   return (
-    // const {vote} = Math.round({vote_average}*10)/10;
-
-    <div className="media">
+    <ContentModal>
       <Badge
         badgeContent={vote_average}
         color={vote_average > 6 ? "primary" : "secondary"}
@@ -29,6 +28,6 @@ export default function SingleContent({
         {media_type === "tv" ? "TV Series" : "Movie"}
         <span className="subTitle">{date} </span>
       </span>
-    </div>
+    </ContentModal>
   );
 }
