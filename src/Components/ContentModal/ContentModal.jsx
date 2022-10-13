@@ -13,6 +13,8 @@ import {
   unavailableLandscape,
 } from "../../Config/config";
 
+import Carousel from "../Carousel/Carousel";
+
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
@@ -61,10 +63,15 @@ export default function TransitionsModal({ children, media_type, id }) {
   }, []);
 
   return (
-    <div>
-      <Button onClick={handleOpen} className="media">
+    <>
+      <div
+        onClick={handleOpen}
+        className="media"
+        color="inherit"
+        style={{ cursor: "pointer" }}
+      >
         {children}
-      </Button>
+      </div>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -81,7 +88,7 @@ export default function TransitionsModal({ children, media_type, id }) {
           {content && (
             <div className={classes.paper}>
               <div className="ContentModal">
-                {/* <img
+                <img
                   alt={content.name || content.title}
                   className="Content_portrait"
                   src={
@@ -89,7 +96,7 @@ export default function TransitionsModal({ children, media_type, id }) {
                       ? `${img_500}/${content.poster_path}`
                       : unavailable
                   }
-                /> */}
+                />
                 <img
                   alt={content.name || content.title}
                   className="ContenModal_landscape"
@@ -115,7 +122,9 @@ export default function TransitionsModal({ children, media_type, id }) {
                   <span className="ContentModal_description">
                     {content.overview}
                   </span>
-                  <div></div>
+                  <div>
+                    <Carousel media_type={media_type} id={id} />
+                  </div>
                   <Button
                     variant="contained"
                     startIcon={<YouTubeIcon />}
@@ -131,6 +140,6 @@ export default function TransitionsModal({ children, media_type, id }) {
           )}
         </Fade>
       </Modal>
-    </div>
+    </>
   );
 }
