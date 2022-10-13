@@ -1,0 +1,23 @@
+.ContenModal_landscape {
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.Content_portrait {
+  display: none;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.tagline {
+  padding-bottom: 10px;
+  align-self: center;
+}
+
+.ContentModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  overflow: scroll;
+}
