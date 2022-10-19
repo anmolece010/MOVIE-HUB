@@ -7,18 +7,51 @@ import Movies from "./Pages/Movies/Movies";
 import Trending from "./Pages/Trending/Trending";
 import Series from "./Pages/Series/Series";
 import Search from "./Pages/Search/Search";
+import Home from "./Components/Home/Home";
+import Favourites from "./Components/Favourites/Favourite";
+import { useState } from "react";
+
+const getLocalList = () => {
+  const listData = localStorage.getItem("lists");
+  // console.log(listData);
+
+  if (listData) {
+    return JSON.parse(localStorage.getItem("lists"));
+  } else {
+    return [];
+  }
+};
 
 function App() {
+  const [list, setList] = useState(getLocalList());
+
   return (
     <BrowserRouter>
       <Header />
       <div className="app">
         <Container>
           <Routes>
-            <Route path="/trending" element={<Trending />} />
-            <Route path="/movies" element={<Movies />} />
-            <Route path="/series" element={<Series />} />
-            <Route path="/search" element={<Search />} />
+            <Route path="/" element={<Home />} exact />
+            <Route
+              path="/trending"
+              element={<Trending list={list} setList={setList} />}
+            />
+            <Route
+              path="/movies"
+              element={<Movies list={list} setList={setList} />}
+            />
+            <Route
+              path="/favourites"
+              element={<Favourites list={list} setList={setList} />}
+            />
+            <Route
+              path="/series"
+              element={<Series list={list} setList={setList} />}
+            />
+            <Route
+              path="/search"
+              element={<Search list={list} setList={setList} />}
+            />
           </Routes>
         </Container>
       </div>

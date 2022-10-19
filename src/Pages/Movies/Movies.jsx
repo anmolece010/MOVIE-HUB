@@ -5,7 +5,7 @@ import CustomPagination from "../../Components/Pagination.jsx/CustomPagination";
 import Genres from "../../Components/Genres";
 import useGenres from "../../Hooks/useGenre";
 
-export default function Movies() {
+export default function Movies({ list, setList }) {
   const [page, setPage] = useState(1);
   const [content, setContent] = useState([]);
   const [numOfPages, setNumOfPages] = useState();
@@ -48,6 +48,8 @@ export default function Movies() {
               date={c.release_date || c.first_air_date}
               media_type="movies"
               vote_average={Math.round(c.vote_average * 10) / 10}
+              list={list}
+              setList={setList}
             />
           ))}
       </div>

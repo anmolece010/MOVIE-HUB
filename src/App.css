@@ -4,7 +4,7 @@
 
 .app {
   min-height: 100vh;
-  background-color: #39445a;
+  background-color: #0c111b;
   color: white;
   padding-top: 130px;
   padding-bottom: 70px;
@@ -20,7 +20,8 @@
   text-transform: uppercase;
   display: flex;
   justify-content: center;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", "HelveticaNeue-Light", sans-serif;
+  font-weight: 100;
   font-size: 4vw;
   padding: 4px;
   border-radius: 50px;

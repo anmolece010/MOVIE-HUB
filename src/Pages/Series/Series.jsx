@@ -5,7 +5,7 @@ import CustomPagination from "../../Components/Pagination.jsx/CustomPagination";
 import SingleContent from "../../Components/SingleContent/SingleContent";
 import useGenres from "../../Hooks/useGenre";
 
-export default function Series() {
+export default function Series({ list, setList }) {
   const [page, setPage] = useState(1);
   const [content, setContent] = useState([]);
   const [numOfPages, setNumOfPages] = useState();
@@ -48,6 +48,8 @@ export default function Series() {
               date={c.release_date || c.first_air_date}
               media_type="tv"
               vote_average={Math.round(c.vote_average * 10) / 10}
+              list={list}
+              setList={setList}
             />
           ))}
       </div>

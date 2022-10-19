@@ -4,7 +4,7 @@ import SingleContent from "../../Components/SingleContent/SingleContent";
 import "./trending.css";
 import CustomPagination from "../../Components/Pagination.jsx/CustomPagination";
 
-export default function Trending() {
+export default function Trending({ list, setList }) {
   const [content, setContent] = useState([]);
   const [page, setPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(1);
@@ -37,6 +37,8 @@ export default function Trending() {
               date={c.release_date || c.first_air_date}
               media_type={c.media_type}
               vote_average={Math.round(c.vote_average * 10) / 10}
+              list={list}
+              setList={setList}
             />
           ))}
       </div>

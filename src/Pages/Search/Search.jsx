@@ -12,7 +12,7 @@ import React, { useEffect, useState } from "react";
 import CustomPagination from "../../Components/Pagination.jsx/CustomPagination";
 import SingleContent from "../../Components/SingleContent/SingleContent";
 
-export default function Search() {
+export default function Search({ list, setList }) {
   const [type, setType] = useState(0);
   const [page, setPage] = useState(1);
 
@@ -105,6 +105,8 @@ export default function Search() {
               date={c.release_date || c.first_air_date}
               media_type={type ? "tv" : "movie"}
               vote_average={Math.round(c.vote_average * 10) / 10}
+              list={list}
+              setList={setList}
             />
           ))}
         {searchText &&

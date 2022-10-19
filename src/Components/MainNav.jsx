@@ -16,7 +16,7 @@ export default function SimpleBottomNavigation() {
   React.useEffect(() => {
     if (value === 0) navigate("/trending");
     else if (value === 1) navigate("/movies");
-    // else if (value === 2) navigate("/favourites");
+    else if (value === 2) navigate("/favourites");
     else if (value === 3) navigate("/series");
     else if (value === 4) navigate("/search");
   }, [value, navigate]);

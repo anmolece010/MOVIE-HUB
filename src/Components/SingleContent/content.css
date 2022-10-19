@@ -2,12 +2,13 @@
   display: flex;
   flex-direction: column;
   width: 200px;
+  /* height: 435px; */
   padding: 5px;
   margin: 5px 0;
-  background-color: #282c34;
+  background-color: #131a28;
   border-radius: 10px;
   position: relative;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", "HelveticaNeue-Light", sans-serif;
 }
 
 .media:hover {
