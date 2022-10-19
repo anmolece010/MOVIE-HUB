@@ -70,7 +70,12 @@ export default function DataTable({ list, setList }) {
                 key={index}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
-                <TableCell></TableCell>
+                <TableCell>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w300/${d[4]}`}
+                    style={{ width: "120px", height: "80px" }}
+                  />
+                </TableCell>
                 <TableCell component="th" scope="row">
                   {d[1]}
                 </TableCell>

@@ -27,13 +27,13 @@ export default function SingleContent({
   setList,
 }) {
   var b = 0;
-  const handleclick = ({ id, title, media_type, vote_average }) => {
+  const handleclick = ({ id, title, media_type, vote_average, poster }) => {
     list.map((l) => {
       if (l[0] === id) b = 1;
     });
 
     if (b === 0) {
-      setList([...list, [id, title, media_type, vote_average]]);
+      setList([...list, [id, title, media_type, vote_average, poster]]);
     }
   };
 
@@ -68,7 +68,9 @@ export default function SingleContent({
       >
         <Button
           variant="contained"
-          onClick={() => handleclick({ id, title, media_type, vote_average })}
+          onClick={() =>
+            handleclick({ id, title, media_type, vote_average, poster })
+          }
         >
           Add To Favourites
         </Button>
