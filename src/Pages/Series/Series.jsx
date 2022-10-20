@@ -50,6 +50,7 @@ export default function Series({ list, setList }) {
               vote_average={Math.round(c.vote_average * 10) / 10}
               list={list}
               setList={setList}
+              genre={c.genre_ids}
             />
           ))}
       </div>

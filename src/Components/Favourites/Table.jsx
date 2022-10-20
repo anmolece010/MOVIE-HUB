@@ -10,31 +10,21 @@ import CustomPagination from "../Pagination.jsx/CustomPagination";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Button } from "@material-ui/core";
 
-// const getLocalList = () => {
-//   const listData = localStorage.getItem("lists");
-//   // console.log(listData);
-
-//   if (listData) {
-//     return JSON.parse(localStorage.getItem("lists"));
-//   } else {
-//     return [];
-//   }
-// };
-
-export default function DataTable({ list, setList }) {
-  const [data, setData] = React.useState(list);
-
-  const handleClick = (id) => {
-    const newList = data.filter((l) => {
+export default function DataTable({ list, setList, data, setData }) {
+  const handleClickDelete = (id) => {
+    const newData = data.filter((l) => {
       return l[0] !== id;
     });
-    setData(newList);
+    setData(newData);
+    const newList = list.filter((l) => {
+      return l[0] !== id;
+    });
     setList(newList);
   };
 
   React.useEffect(() => {
-    localStorage.setItem("lists", JSON.stringify(data));
-  }, [data]);
+    localStorage.setItem("lists", JSON.stringify(list));
+  }, [list, data]);
 
   return (
     <>
@@ -53,13 +43,8 @@ export default function DataTable({ list, setList }) {
                 <b>Rating</b>
               </TableCell>
               <TableCell>
-                <div
-                  style={{ display: "flex", justifyContenet: "space-around" }}
-                >
+                <div style={{ display: "flex", justifyContenet: "center" }}>
                   <b>Delete</b>
-                  <span>
-                    <DeleteIcon sx={{ color: "#ba000d" }} />
-                  </span>
                 </div>
               </TableCell>
             </TableRow>
@@ -84,7 +69,7 @@ export default function DataTable({ list, setList }) {
                 </TableCell>
                 <TableCell align="right">{d[3]}</TableCell>
                 <TableCell align="center">
-                  <Button onClick={() => handleClick(d[0])}>
+                  <Button onClick={() => handleClickDelete(d[0])}>
                     <span>
                       <DeleteIcon sx={{ color: "#ba000d" }} />
                     </span>

@@ -5,17 +5,6 @@ import ContentModal from "../ContentModal/ContentModal";
 import { Button } from "@material-ui/core";
 import "./content.css";
 
-const getLocalList = () => {
-  const listData = localStorage.getItem("lists");
-  // console.log(listData);
-
-  if (listData) {
-    return JSON.parse(localStorage.getItem("lists"));
-  } else {
-    return [];
-  }
-};
-
 export default function SingleContent({
   id,
   poster,
@@ -25,15 +14,24 @@ export default function SingleContent({
   vote_average,
   list,
   setList,
+  genre,
 }) {
   var b = 0;
-  const handleclick = ({ id, title, media_type, vote_average, poster }) => {
+  const handleclick = ({
+    id,
+    title,
+    media_type,
+    vote_average,
+    poster,
+    genre,
+  }) => {
     list.map((l) => {
       if (l[0] === id) b = 1;
     });
 
     if (b === 0) {
-      setList([...list, [id, title, media_type, vote_average, poster]]);
+      setList([...list, [id, title, media_type, vote_average, poster, genre]]);
+      // console.log(genre);
     }
   };
 
@@ -69,7 +67,14 @@ export default function SingleContent({
         <Button
           variant="contained"
           onClick={() =>
-            handleclick({ id, title, media_type, vote_average, poster })
+            handleclick({
+              id,
+              title,
+              media_type,
+              vote_average,
+              poster,
+              genre,
+            })
           }
         >
           Add To Favourites

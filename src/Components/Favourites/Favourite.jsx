@@ -24,13 +24,40 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
+const getLocalList = () => {
+  const listData = localStorage.getItem("lists");
+  // console.log(listData);
+
+  if (listData) {
+    return JSON.parse(localStorage.getItem("lists"));
+  } else {
+    return [];
+  }
+};
+
 export default function Favourites({ list, setList }) {
+  const [data, setData] = React.useState(getLocalList);
   const [genreslist, setGenresList] = React.useState([]);
   const fetchGenres = async () => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     );
     setGenresList(data.genres);
+    // console.log(data.genres);
+  };
+
+  const handleClick1 = () => {
+    setData(getLocalList);
+    window.scroll(0, 0);
+  };
+
+  const handleClick2 = (id) => {
+    const newList = list.filter((l) => {
+      return l[5][0] === id;
+    });
+    console.log(newList);
+    setData(newList);
+    window.scroll(0, 0);
   };
 
   React.useEffect(() => {
@@ -45,17 +72,17 @@ export default function Favourites({ list, setList }) {
             <div className="sidebar">
               <List component="nav" aria-label="main mailbox folders">
                 <ListItem>
-                  <ListItemButton>
+                  <Button onClick={handleClick1}>
                     <Typography>
                       <b>All Genres</b>
                     </Typography>
-                  </ListItemButton>
+                  </Button>
                 </ListItem>
               </List>
               <List component="nav" aria-label="main mailbox folders">
-                {genreslist.map((list) => (
-                  <ListItem>
-                    <ListItemButton>
+                {genreslist.map((list, index) => (
+                  <ListItem key={index}>
+                    <ListItemButton onClick={() => handleClick2(list.id)}>
                       <Typography>{list.name}</Typography>
                       <Divider />
                     </ListItemButton>
@@ -87,7 +114,14 @@ export default function Favourites({ list, setList }) {
           </Item>
           <Grid item xs={12} sx={{ marginTop: "20px" }}>
             <Item>
-              <DataTable list={list} setList={setList} />
+              {data && (
+                <DataTable
+                  list={list}
+                  setList={setList}
+                  data={data}
+                  setData={setData}
+                />
+              )}
             </Item>
           </Grid>
         </Grid>

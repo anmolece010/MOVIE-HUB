@@ -14,7 +14,7 @@ export default function Trending({ list, setList }) {
       `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
     );
 
-    // console.log(data.results);
+    console.log(data.results);
     setContent(data.results);
     setNumOfPages(data.total_pages);
   };
@@ -39,6 +39,7 @@ export default function Trending({ list, setList }) {
               vote_average={Math.round(c.vote_average * 10) / 10}
               list={list}
               setList={setList}
+              genre={c.genre_ids}
             />
           ))}
       </div>

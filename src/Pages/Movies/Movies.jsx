@@ -50,6 +50,8 @@ export default function Movies({ list, setList }) {
               vote_average={Math.round(c.vote_average * 10) / 10}
               list={list}
               setList={setList}
+              genres={genres}
+              genre={c.genre_ids}
             />
           ))}
       </div>
