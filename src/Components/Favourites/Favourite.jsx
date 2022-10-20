@@ -38,6 +38,7 @@ const getLocalList = () => {
 export default function Favourites({ list, setList }) {
   const [data, setData] = React.useState(getLocalList);
   const [genreslist, setGenresList] = React.useState([]);
+  const [buttonVariant, setButtonVariant] = React.useState("outlined");
   const fetchGenres = async () => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
@@ -49,6 +50,7 @@ export default function Favourites({ list, setList }) {
   const handleClick1 = () => {
     setData(getLocalList);
     window.scroll(0, 0);
+    setButtonVariant("contained");
   };
 
   const handleClick2 = (id) => {
@@ -57,6 +59,7 @@ export default function Favourites({ list, setList }) {
     });
     console.log(newList);
     setData(newList);
+    // setButtonVariant("contained");
     window.scroll(0, 0);
   };
 
@@ -72,7 +75,7 @@ export default function Favourites({ list, setList }) {
             <div className="sidebar">
               <List component="nav" aria-label="main mailbox folders">
                 <ListItem>
-                  <Button onClick={handleClick1}>
+                  <Button onClick={handleClick1} variant={buttonVariant}>
                     <Typography>
                       <b>All Genres</b>
                     </Typography>
@@ -82,7 +85,10 @@ export default function Favourites({ list, setList }) {
               <List component="nav" aria-label="main mailbox folders">
                 {genreslist.map((list, index) => (
                   <ListItem key={index}>
-                    <ListItemButton onClick={() => handleClick2(list.id)}>
+                    <ListItemButton
+                      onClick={() => handleClick2(list.id)}
+                      variant={buttonVariant}
+                    >
                       <Typography>{list.name}</Typography>
                       <Divider />
                     </ListItemButton>

@@ -5,10 +5,9 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import CustomPagination from "../Pagination.jsx/CustomPagination";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Button } from "@material-ui/core";
+import { Button, createTheme } from "@material-ui/core";
 
 export default function DataTable({ list, setList, data, setData }) {
   const handleClickDelete = (id) => {
@@ -28,7 +27,7 @@ export default function DataTable({ list, setList, data, setData }) {
 
   return (
     <>
-      <TableContainer component={Paper}>
+      <TableContainer>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
