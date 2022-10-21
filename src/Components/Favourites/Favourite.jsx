@@ -15,6 +15,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import DataTable from "./Table";
 import axios from "axios";
 import { ListItemButton } from "@mui/material";
+import "./favourite.css";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -38,7 +39,9 @@ const getLocalList = () => {
 export default function Favourites({ list, setList }) {
   const [data, setData] = React.useState(getLocalList);
   const [genreslist, setGenresList] = React.useState([]);
-  const [buttonVariant, setButtonVariant] = React.useState("outlined");
+  // const [buttonColor, setButtonColor] = React.useState("lightgrey");
+  // const [prevId, setPrevId] = React.useState(0);
+
   const fetchGenres = async () => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
@@ -50,16 +53,19 @@ export default function Favourites({ list, setList }) {
   const handleClick1 = () => {
     setData(getLocalList);
     window.scroll(0, 0);
-    setButtonVariant("contained");
   };
 
   const handleClick2 = (id) => {
     const newList = list.filter((l) => {
-      return l[5][0] === id;
+      if (l[5][0] == id) return l[5][0] == id;
+      else if (l[5][1] == id) return l[5][1] == id;
+      else if (l[5][2] == id) return l[5][2] == id;
+      else if (l[5][3] == id) return l[5][3] == id;
+      else if (l[5][4] == id) return l[5][4] == id;
+      else if (l[5][5] == id) return l[5][5] == id;
     });
     console.log(newList);
     setData(newList);
-    // setButtonVariant("contained");
     window.scroll(0, 0);
   };
 
@@ -71,24 +77,21 @@ export default function Favourites({ list, setList }) {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid item xs={3}>
-          <Item sx={{ padding: "5px" }}>
-            <div className="sidebar">
+          <Item sx={{ backgroundColor: "#212121" }}>
+            <div>
               <List component="nav" aria-label="main mailbox folders">
-                <ListItem>
-                  <Button onClick={handleClick1} variant={buttonVariant}>
+                <ListItem className="allgenrebutton">
+                  <ListItemButton onClick={handleClick1}>
                     <Typography>
                       <b>All Genres</b>
                     </Typography>
-                  </Button>
+                  </ListItemButton>
                 </ListItem>
               </List>
               <List component="nav" aria-label="main mailbox folders">
                 {genreslist.map((list, index) => (
-                  <ListItem key={index}>
-                    <ListItemButton
-                      onClick={() => handleClick2(list.id)}
-                      variant={buttonVariant}
-                    >
+                  <ListItem key={index} className="genreButton">
+                    <ListItemButton onClick={() => handleClick2(list.id)}>
                       <Typography>{list.name}</Typography>
                       <Divider />
                     </ListItemButton>
@@ -99,7 +102,7 @@ export default function Favourites({ list, setList }) {
           </Item>
         </Grid>
         <Grid item xs={12} sm={12} md={9}>
-          <Item>
+          {/* <Item>
             <div className="search" style={{ display: "flex" }}>
               <TextField
                 sx={{ flex: 1 }}
@@ -117,9 +120,9 @@ export default function Favourites({ list, setList }) {
                 <SearchIcon />
               </Button>
             </div>
-          </Item>
-          <Grid item xs={12} sx={{ marginTop: "20px" }}>
-            <Item>
+          </Item> */}
+          <Grid item xs={12} sx={{ marginTop: "0px" }}>
+            <Item sx={{ backgroundColor: "#212121" }}>
               {data && (
                 <DataTable
                   list={list}

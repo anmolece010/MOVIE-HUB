@@ -17,6 +17,7 @@ export default function SingleContent({
   genre,
 }) {
   var b = 0;
+
   const handleclick = ({
     id,
     title,
@@ -66,6 +67,7 @@ export default function SingleContent({
       >
         <Button
           variant="contained"
+          color="primary"
           onClick={() =>
             handleclick({
               id,

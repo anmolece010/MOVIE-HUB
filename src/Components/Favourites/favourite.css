@@ -1,0 +1,25 @@
+.allgenrebutton {
+  background-color: #3f51b5;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.genreButton {
+  background-color: #032c55;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.favtable {
+  background-color: rgba(4, 11, 27, 0.491);
+}
+
+.favfont {
+  color: white;
+}
