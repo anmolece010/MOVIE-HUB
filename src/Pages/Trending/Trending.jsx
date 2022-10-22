@@ -40,6 +40,7 @@ export default function Trending({ list, setList }) {
               list={list}
               setList={setList}
               genre={c.genre_ids}
+              btn={0}
             />
           ))}
       </div>

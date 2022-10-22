@@ -27,3 +27,8 @@
   border-radius: 50px;
   color: white;
 }
+
+.addtofavButton {
+  display: flex;
+  justify-content: center;
+}

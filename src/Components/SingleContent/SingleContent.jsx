@@ -17,6 +17,8 @@ export default function SingleContent({
   genre,
 }) {
   var b = 0;
+  const [text, setText] = useState("Add To Favourites");
+  const [btncolor, setbtncolor] = useState("#131a28");
 
   const handleclick = ({
     id,
@@ -27,21 +29,37 @@ export default function SingleContent({
     genre,
   }) => {
     list.map((l) => {
-      if (l[0] === id) b = 1;
+      if (l[0] === id) {
+        b = 1;
+      }
     });
 
     if (b === 0) {
       setList([...list, [id, title, media_type, vote_average, poster, genre]]);
       // console.log(genre);
     }
+    // if (text === "Add To Fav") setText("Remove From Fav");
+    // if (text === "Remove From Fav") setText("Add To Fav");
+  };
+
+  const setBtn = (list) => {
+    list.map((l) => {
+      if (l[0] === id) {
+        setText("Favourite");
+        setbtncolor("primary");
+      }
+    });
   };
 
   useEffect(() => {
     localStorage.setItem("lists", JSON.stringify(list));
+    setBtn(list);
   }, [list]);
 
+  // console.log(list);
+
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column" }}>
       <ContentModal media_type={media_type} id={id}>
         <Badge
           badgeContent={vote_average}
@@ -58,30 +76,17 @@ export default function SingleContent({
           <span className="subTitle">{date} </span>
         </span>
       </ContentModal>
-      <span
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginBottom: 0,
-        }}
-      >
+      <div className="addtofavButton">
         <Button
           variant="contained"
-          color="primary"
+          color={btncolor}
           onClick={() =>
-            handleclick({
-              id,
-              title,
-              media_type,
-              vote_average,
-              poster,
-              genre,
-            })
+            handleclick({ id, title, media_type, vote_average, poster, genre })
           }
         >
-          Add To Favourites
+          {text}
         </Button>
-      </span>
+      </div>
     </div>
   );
 }

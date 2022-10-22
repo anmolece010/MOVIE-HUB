@@ -3,15 +3,8 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import {
-  Button,
-  Divider,
-  List,
-  ListItem,
-  TextField,
-  Typography,
-} from "@material-ui/core";
-import SearchIcon from "@mui/icons-material/Search";
+import { Divider, List, ListItem, Typography } from "@material-ui/core";
+
 import DataTable from "./Table";
 import axios from "axios";
 import { ListItemButton } from "@mui/material";
@@ -57,12 +50,12 @@ export default function Favourites({ list, setList }) {
 
   const handleClick2 = (id) => {
     const newList = list.filter((l) => {
-      if (l[5][0] == id) return l[5][0] == id;
-      else if (l[5][1] == id) return l[5][1] == id;
-      else if (l[5][2] == id) return l[5][2] == id;
-      else if (l[5][3] == id) return l[5][3] == id;
-      else if (l[5][4] == id) return l[5][4] == id;
-      else if (l[5][5] == id) return l[5][5] == id;
+      if (l[5][0] === id) return l[5][0] === id;
+      else if (l[5][1] === id) return l[5][1] === id;
+      else if (l[5][2] === id) return l[5][2] === id;
+      else if (l[5][3] === id) return l[5][3] === id;
+      else if (l[5][4] === id) return l[5][4] === id;
+      else if (l[5][5] === id) return l[5][5] === id;
     });
     console.log(newList);
     setData(newList);
