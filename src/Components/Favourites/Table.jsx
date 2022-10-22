@@ -31,20 +31,32 @@ export default function DataTable({ list, setList, data, setData }) {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell sx={{ color: "white" }}>
+              <TableCell sx={{ color: "white", fontSize: "1.2vw" }}>
                 <b>Poster</b>
               </TableCell>
-              <TableCell sx={{ color: "white" }}>
+              <TableCell sx={{ color: "white", fontSize: "1.2vw" }}>
                 <b>Title</b>
               </TableCell>
-              <TableCell align="right" sx={{ color: "white" }}>
+              <TableCell
+                align="right"
+                sx={{ color: "white", fontSize: "1.2vw" }}
+              >
                 <b>Genres</b>
               </TableCell>
-              <TableCell align="right" sx={{ color: "white" }}>
+              <TableCell
+                align="right"
+                sx={{ color: "white", fontSize: "1.2vw" }}
+              >
                 <b>Rating</b>
               </TableCell>
-              <TableCell sx={{ color: "white" }}>
-                <div style={{ display: "flex", justifyContenet: "center" }}>
+              <TableCell sx={{ color: "white", fontSize: "1.2vw" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContenet: "center",
+                    fontSize: "1.2vw",
+                  }}
+                >
                   <b>Delete</b>
                 </div>
               </TableCell>
@@ -63,22 +75,33 @@ export default function DataTable({ list, setList, data, setData }) {
                     }}
                   />
                 </TableCell>
-                <TableCell component="th" scope="row" sx={{ color: "white" }}>
+                <TableCell
+                  component="th"
+                  scope="row"
+                  sx={{ color: "white", fontSize: "1.1vw" }}
+                >
                   {d[1]}
                 </TableCell>
                 <TableCell
                   align="right"
-                  sx={{ textTransform: "uppercase", color: "white" }}
+                  sx={{
+                    textTransform: "uppercase",
+                    color: "white",
+                    fontSize: "1.1vw",
+                  }}
                 >
                   {d[2]}
                 </TableCell>
-                <TableCell align="right" sx={{ color: "white" }}>
+                <TableCell
+                  align="right"
+                  sx={{ color: "white", fontSize: "1.1vw" }}
+                >
                   {d[3]}{" "}
                 </TableCell>
                 <TableCell align="center">
                   <Button onClick={() => handleClickDelete(d[0])}>
                     <span>
-                      <DeleteIcon sx={{ color: "#ba000d" }} />
+                      <DeleteIcon size="large" sx={{ color: "#ba000d" }} />
                     </span>
                   </Button>
                 </TableCell>

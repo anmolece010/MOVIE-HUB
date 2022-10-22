@@ -18,7 +18,7 @@ export default function SingleContent({
 }) {
   var b = 0;
   const [text, setText] = useState("Add To Favourites");
-  const [btncolor, setbtncolor] = useState("#131a28");
+  const [btncolor, setbtncolor] = useState("secondary");
 
   const handleclick = ({
     id,
